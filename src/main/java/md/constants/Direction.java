@@ -1,7 +1,7 @@
-package org.constants;
+package md.constants;
 
 public enum Direction {
     UP,
     NONE,
-    DOWN;
+    DOWN
 }

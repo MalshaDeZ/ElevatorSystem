@@ -1,7 +1,7 @@
-package org.models;
+package md.models;
 
 
-import org.constants.Direction;
+import md.constants.Direction;
 
 public class PassengerRequest {
 

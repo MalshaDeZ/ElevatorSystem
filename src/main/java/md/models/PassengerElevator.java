@@ -1,9 +1,8 @@
-package org.models;
+package md.models;
 
 
-import org.constants.Direction;
-import org.constants.ElevatorStatus;
-import org.models.Elevator;
+import md.constants.Direction;
+import md.constants.ElevatorStatus;
 
 public class PassengerElevator implements Elevator {
 

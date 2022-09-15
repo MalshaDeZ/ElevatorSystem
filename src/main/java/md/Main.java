@@ -1,9 +1,9 @@
-package org;
+package md;
 
-import org.constants.Direction;
-import org.models.PassengerElevator;
-import org.models.PassengerRequest;
-import org.services.ElevatorController;
+import md.constants.Direction;
+import md.models.PassengerElevator;
+import md.models.PassengerRequest;
+import md.services.ElevatorController;
 
 public class Main {
     public static void main(String[] args) {

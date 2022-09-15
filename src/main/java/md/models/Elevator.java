@@ -1,7 +1,7 @@
-package org.models;
+package md.models;
 
-import org.constants.Direction;
-import org.constants.ElevatorStatus;
+import md.constants.Direction;
+import md.constants.ElevatorStatus;
 
 public interface Elevator {
 

@@ -1,8 +1,8 @@
-package org.constants;
+package md.constants;
 
 public enum ElevatorStatus {
     MOVING,
     LOADING,
     MAINTENANCE,
-    IDLE;
+    IDLE
 }

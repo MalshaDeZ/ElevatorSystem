@@ -1,4 +1,4 @@
-package org.exceptions;
+package md.exceptions;
 
 public abstract class ForbiddenException extends RuntimeException{
     private static final String ERROR_MESSAGE_HEADER = "forbidden action";

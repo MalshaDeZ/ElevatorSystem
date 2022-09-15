@@ -1,12 +1,12 @@
-package org.services;
+package md.services;
 
-import org.constants.Direction;
-import org.constants.ElevatorStatus;
-import org.exceptions.impl.InvalidWeightException;
-import org.models.Elevator;
-import org.models.MovingDetails;
-import org.models.PassengerElevator;
-import org.models.PassengerRequest;
+import md.constants.Direction;
+import md.exceptions.impl.InvalidWeightException;
+import md.models.Elevator;
+import md.models.PassengerElevator;
+import md.models.PassengerRequest;
+import md.constants.ElevatorStatus;
+import md.models.MovingDetails;
 
 import java.util.*;
 import java.util.logging.Level;

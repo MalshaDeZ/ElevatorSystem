@@ -1,6 +1,6 @@
-package org.exceptions.impl;
+package md.exceptions.impl;
 
-import org.exceptions.ForbiddenException;
+import md.exceptions.ForbiddenException;
 
 public class InvalidWeightException extends ForbiddenException {
 

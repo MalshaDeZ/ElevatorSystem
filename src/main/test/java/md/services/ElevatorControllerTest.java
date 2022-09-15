@@ -1,14 +1,13 @@
-package services;
+package md.services;
 
-import org.constants.Direction;
-import org.constants.ElevatorStatus;
-import org.exceptions.impl.InvalidWeightException;
+import md.constants.Direction;
+import md.constants.ElevatorStatus;
+import md.exceptions.impl.InvalidWeightException;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Tag;
-import org.services.ElevatorController;
-import org.models.PassengerElevator;
-import org.models.PassengerRequest;
+import md.models.PassengerElevator;
+import md.models.PassengerRequest;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -123,7 +122,7 @@ public class ElevatorControllerTest {
         elevatorController.addFloor(new PassengerRequest(3, Direction.UP, 400));
 
         int nextFloor = elevatorController.getNextFloor();
-        assertEquals(1, nextFloor);
+        assertEquals(3, nextFloor);
 
     }
 
