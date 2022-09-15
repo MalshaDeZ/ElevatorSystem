@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class ElevatorController {
+public class ElevatorControlService {
 
 
     private static final double TRANSITION_TIME = 1000; // in milliseconds
@@ -24,14 +24,14 @@ public class ElevatorController {
 
     private Elevator elevator;
 
-    public ElevatorController() {
+    public ElevatorControlService() {
 
         this.upQueue = new TreeSet<>();
         this.downQueue = new TreeSet<>();
         this.elevator = new PassengerElevator();
     }
 
-    public ElevatorController(Elevator elevator) {
+    public ElevatorControlService(Elevator elevator) {
 
         this.upQueue = new TreeSet<>();
         this.downQueue = new TreeSet<>();
@@ -78,7 +78,7 @@ public class ElevatorController {
      */
     public void moveLift() throws InterruptedException {
 
-        this.elevator.setMovingDirection(this.getDirection());
+        this.elevator.setMovingDirection(this.getElevatorDirection());
 
         Direction currentDirection = this.elevator.getMovingDirection();
 
@@ -102,7 +102,7 @@ public class ElevatorController {
      */
     public int getNextFloor() {
 
-        this.elevator.setMovingDirection(this.getDirection());
+        this.elevator.setMovingDirection(this.getElevatorDirection());
 
         if (!upQueue.isEmpty() || !downQueue.isEmpty()) {
             if (elevator.getMotionStatus().equals(ElevatorStatus.IDLE)) {
@@ -120,19 +120,19 @@ public class ElevatorController {
                 // and vise versa if the lift is moving down
                 if (this.elevator.getMovingDirection().equals(Direction.UP)) {
 
-                    if (upQueue.size() > 0) {
+                    if (!upQueue.isEmpty()) {
                         return upQueue.first();
                     }
-                    if (downQueue.size() > 0) {
+                    if (!downQueue.isEmpty()) {
                         return downQueue.last();
                     }
 
                 } else if (this.elevator.getMovingDirection().equals(Direction.DOWN)) {
 
-                    if (downQueue.size() > 0) {
+                    if (!downQueue.isEmpty()) {
                         return downQueue.last();
                     }
-                    if (upQueue.size() > 0) {
+                    if (!upQueue.isEmpty()) {
                         return upQueue.first();
                     }
                 } else {
@@ -182,10 +182,10 @@ public class ElevatorController {
     /**
      * @return the current moving direction of the lift
      */
-    private Direction getDirection() {
-        if (this.upQueue.size() > 0) {
+    private Direction getElevatorDirection() {
+        if (!this.upQueue.isEmpty()) {
             return Direction.UP;
-        } else if (this.downQueue.size() > 0) {
+        } else if (!this.downQueue.isEmpty()) {
             return Direction.DOWN;
         }
         return Direction.NONE;
@@ -207,7 +207,7 @@ public class ElevatorController {
                 this.elevator.move();
                 logger.info("Lift moving up to floor :" + this.elevator.getCurrentFloor());
                 Thread.sleep(this.calculateTransitioningTime(prevFloor, this.elevator.getCurrentFloor()));// The time in which lift moves up
-            } while (this.upQueue.size() > 0);
+            } while (!this.upQueue.isEmpty());
         }
         if (!downQueue.isEmpty()) {
             moveLiftDown();
@@ -233,9 +233,9 @@ public class ElevatorController {
                 this.elevator.move();
                 logger.info("Lift moving down to floor :" + this.elevator.getCurrentFloor());
                 Thread.sleep(this.calculateTransitioningTime(prevFloor, this.elevator.getCurrentFloor()));// The time in which lift moves up
-            } while (this.downQueue.size() > 0);
+            } while (!this.downQueue.isEmpty());
         }
-        if (upQueue.size() > 0) {
+        if (!upQueue.isEmpty()) {
             moveLiftUp();
         } else {
             elevator.setMotionStatus(ElevatorStatus.IDLE);

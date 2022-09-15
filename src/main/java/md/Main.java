@@ -3,19 +3,19 @@ package md;
 import md.constants.Direction;
 import md.models.PassengerElevator;
 import md.models.PassengerRequest;
-import md.services.ElevatorController;
+import md.services.ElevatorControlService;
 
 public class Main {
     public static void main(String[] args) {
 
         PassengerElevator passengerElevator = new PassengerElevator();
-        ElevatorController elevatorController = new ElevatorController(passengerElevator);
-        elevatorController.addFloor(new PassengerRequest(6, Direction.UP, 300));
-        elevatorController.addFloor(new PassengerRequest(-1, Direction.DOWN, 350));
-        elevatorController.addFloor(new PassengerRequest(4, Direction.UP, 350));
+        ElevatorControlService elevatorControlService = new ElevatorControlService(passengerElevator);
+        elevatorControlService.addFloor(new PassengerRequest(6, Direction.UP, 300));
+        elevatorControlService.addFloor(new PassengerRequest(-1, Direction.DOWN, 350));
+        elevatorControlService.addFloor(new PassengerRequest(4, Direction.UP, 350));
 
         try {
-            elevatorController.moveLift();
+            elevatorControlService.moveLift();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
 
